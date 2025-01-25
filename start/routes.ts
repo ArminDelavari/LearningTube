@@ -45,3 +45,15 @@ router.get('/add-instructor', async () => {
     person,
   }
 })
+
+router.get('/run', async () => {
+  //   const results = await people.query().select(
+  //     knex.raw("CONCAT(people.first_name, ' ', people.last_name) AS full_name"),
+  //     knex.raw("STRING_AGG(languages.name, ', ') AS preferences")
+  //   )
+  //   .innerJoin('instructors', 'instructors.people_id', 'people.id')
+  //   .innerJoin('instructor_languages', 'instructor_languages.instructor_id', 'instructors.id')
+  //   .innerJoin('languages', 'languages.id', 'instructor_languages.language_id')
+  //   .groupBy('full_name')
+  // console.log(results)
+})
