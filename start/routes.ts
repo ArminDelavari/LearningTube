@@ -7,7 +7,7 @@
 |
 */
 
-import Person from '#models/person'
+import People from '#models/people'
 import router from '@adonisjs/core/services/router'
 
 router.get('/', async () => {
@@ -16,8 +16,9 @@ router.get('/', async () => {
   }
 })
 
-router.post('/add-person', async ({ request, response }) => {
-  const person = await Person.create({
+router.get('/add-person', async () => {
+  debugger
+  const person = await People.create({
     firstName: 'Armin',
     lastName: 'Delavari',
     email: 'armin.delavari2012@gmail.com',
@@ -25,8 +26,8 @@ router.post('/add-person', async ({ request, response }) => {
     address: 'Some Address',
   })
 
-  return response.json({
+  return {
     message: 'Person created successfully',
     person,
-  })
+  }
 })
