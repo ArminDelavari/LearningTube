@@ -6,26 +6,26 @@ export default class People extends BaseModel {
   public id!: number
 
   @column()
-  public firstName!: string
+  public first_name!: string
 
   @column()
-  public lastName!: string
+  public last_name!: string
 
   @column()
   public email!: string
 
   @column.dateTime()
-  public birthDay!: DateTime | null
+  public birth_day!: DateTime | null
 
   @column()
   public address!: string | null
 
   @column()
-  public personType!: number
+  public person_type!: number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt!: DateTime
+  public created_at!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt!: DateTime
+  public updated_at!: DateTime
 }
