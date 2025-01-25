@@ -21,9 +21,8 @@ router.post('/add-person', async ({ request, response }) => {
     firstName: 'Armin',
     lastName: 'Delavari',
     email: 'armin.delavari2012@gmail.com',
-    birthDay: null, // مقدار اختیاری
+    birthDay: null,
     address: 'Some Address',
-    phoneNumber: '1234567890',
   })
 
   return response.json({
