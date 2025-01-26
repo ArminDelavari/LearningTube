@@ -8,7 +8,7 @@ export default class Learner extends BaseModel {
   public id!: number
 
   @column()
-  public peopleId!: number
+  public people_id!: number
 
   @manyToMany(() => Language, {
     pivotTable: 'learner_languages', // Define the pivot table

@@ -8,6 +8,7 @@
 */
 
 import Instructor from '#models/instructor'
+import Learner from '#models/learner'
 import people from '#models/people'
 import router from '@adonisjs/core/services/router'
 
@@ -36,14 +37,13 @@ router.post('/add-instructor', async ({ request }) => {
   }
 })
 
-router.get('/add-learner', async () => {
+router.post('/add-learner', async ({ request }) => {
   debugger
-  const person = await Instructor.create({
-    people_id: '2',
-  })
+  const data = request.body()
+  const person = await Learner.create(data)
 
   return {
-    message: 'Instructor created successfully',
+    message: 'Learner created successfully',
     person,
   }
 })
