@@ -1,0 +1,5 @@
+npm run dev
+node ace migration:run
+node ace migration:reset
+node ace make:migration instructor_languages
+node ace make:model instructor
