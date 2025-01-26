@@ -17,27 +17,29 @@ router.get('/', async () => {
   }
 })
 
-router.get('/add-person', async () => {
-  debugger
-  const person = await people.create({
-    first_name: 'Armin',
-    last_name: 'Delavari',
-    email: 'armin.delavari2012@gmail.com',
-    birth_day: null,
-    address: null,
-    person_type: 2,
-  })
-
+router.post('/add-person', async ({ request }) => {
+  const data = request.body()
+  const person = await people.create(data)
   return {
     message: 'Person created successfully',
     person,
   }
 })
 
-router.get('/add-instructor', async () => {
+router.post('/add-instructor', async ({ request }) => {
+  const data = request.body()
+  const person = await Instructor.create(data)
+
+  return {
+    message: 'Instructor created successfully',
+    person,
+  }
+})
+
+router.get('/add-learner', async () => {
   debugger
   const person = await Instructor.create({
-    people_id: '1',
+    people_id: '2',
   })
 
   return {
@@ -48,8 +50,8 @@ router.get('/add-instructor', async () => {
 
 router.get('/run', async () => {
   //   const results = await people.query().select(
-  //     knex.raw("CONCAT(people.first_name, ' ', people.last_name) AS full_name"),
-  //     knex.raw("STRING_AGG(languages.name, ', ') AS preferences")
+  //     Knex.raw("CONCAT(people.first_name, ' ', people.last_name) AS full_name"),
+  //     Knex.raw("STRING_AGG(languages.name, ', ') AS preferences")
   //   )
   //   .innerJoin('instructors', 'instructors.people_id', 'people.id')
   //   .innerJoin('instructor_languages', 'instructor_languages.instructor_id', 'instructors.id')
