@@ -8,8 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.integer('learner_id', 255).nullable()
       table.integer('language_id', 255).nullable()
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at', { useTz: true })
+      table.timestamp('updated_at', { useTz: true })
     })
   }
 

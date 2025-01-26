@@ -11,7 +11,7 @@ export default class Language extends BaseModel {
   public name!: string
 
   @column()
-  public codeName!: string
+  public code_name!: string
 
   @manyToMany(() => Learner, {
     pivotTable: 'learner_languages', // Define the pivot table

@@ -9,8 +9,8 @@ export default class extends BaseSchema {
       table.string('name', 255).nullable()
       table.string('code_name', 255).nullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at', { useTz: true })
+      table.timestamp('updated_at', { useTz: true })
     })
   }
 
