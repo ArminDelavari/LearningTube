@@ -17,8 +17,8 @@ export default class Instructor extends BaseModel {
   declare updatedAt: DateTime
 
   @manyToMany(() => Language, {
-    pivotTable: 'learner_languages',
-    pivotForeignKey: 'learner_id',
+    pivotTable: 'instructor_languages',
+    pivotForeignKey: 'instructor_id',
     pivotRelatedForeignKey: 'language_id',
   })
   public languages!: ManyToMany<typeof Language>
