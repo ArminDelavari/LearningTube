@@ -3,6 +3,7 @@ import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import Person from './person.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import CourseDefinition from './course_definition.js'
+import Course from './course.js'
 
 export default class CourseRating extends BaseModel {
   public static table = 'course_ratings'
@@ -31,6 +32,6 @@ export default class CourseRating extends BaseModel {
   @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
   public person!: BelongsTo<typeof Person>
 
-  @belongsTo(() => CourseDefinition, { foreignKey: 'courseId', localKey: 'id' })
-  public course!: BelongsTo<typeof CourseDefinition>
+  @belongsTo(() => Course, { foreignKey: 'courseId', localKey: 'id' })
+  public course!: BelongsTo<typeof Course>
 }

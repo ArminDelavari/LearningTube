@@ -18,14 +18,17 @@ export default class Transaction extends BaseModel {
   @column()
   public amount!: number
 
-  @column()
+  @column({ columnName: 'currency' })
+  public currency!: string | null
+
+  @column({ columnName: 'target_bank_account' })
   public targetBankAccount!: string
 
   @column()
   public action!: string
 
   @column()
-  public status!: string | null
+  public status!: 'complete' | 'canceled'
 
   @column()
   public description!: string | null

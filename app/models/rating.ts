@@ -28,5 +28,8 @@ export default class Rating extends BaseModel {
   public updatedAt!: DateTime
 
   @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
-  public person!: BelongsTo<typeof Person>
+  public ratee!: BelongsTo<typeof Person>
+
+  @belongsTo(() => Person, { foreignKey: 'personIdAsReviewer', localKey: 'id' })
+  public rater!: BelongsTo<typeof Person>
 }
