@@ -1,4 +1,4 @@
-import People from '#models/people'
+import People from '#models/person'
 import router from '@adonisjs/core/services/router'
 
 router

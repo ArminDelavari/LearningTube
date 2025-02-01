@@ -7,11 +7,11 @@ export default class CreateRequestTransactions extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table
-        .integer('learnerRequests_id')
+        .integer('requests_id')
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('learnerRequests')
+        .inTable('requests')
         .onDelete('CASCADE')
       table.string('transaction_number').notNullable()
       table.decimal('amount', 10, 2).notNullable()

@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
-import learnerRequests from './request.js'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import Request from './request.js'
 
 export default class RequestTransaction extends BaseModel {
   public static table = 'request_transactions'
@@ -36,6 +36,6 @@ export default class RequestTransaction extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
 
-  @belongsTo(() => learnerRequests, { foreignKey: 'requestId', localKey: 'id' })
-  public request!: BelongsTo<typeof learnerRequests>
+  @belongsTo(() => Request, { foreignKey: 'requestId', localKey: 'id' })
+  public request!: BelongsTo<typeof Request>
 }

@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import Person from './people.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Person from './person.js'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Wallet extends BaseModel {
   public static table = 'wallets'
@@ -13,10 +13,10 @@ export default class Wallet extends BaseModel {
   public personId!: number
 
   @column({ columnName: 'person_id_as_reviewer' })
-  public personIdAsReviewer!: number | null
+  public personIdAsReviewer!: number
 
   @column()
-  public rate!: number | null
+  public rate!: number
 
   @column()
   public description!: string | null

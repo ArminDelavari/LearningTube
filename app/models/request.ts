@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import Instructor from './instructor.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Learner from './learner.js'
 import CourseDefinition from './course_definition.js'
 
-export default class learnerRequests extends BaseModel {
-  public static table = 'learnerRequests'
+export default class Request extends BaseModel {
+  public static table = 'requests'
 
   @column({ isPrimary: true })
   public id!: number

@@ -1,8 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
-import Instructor from './instructor.js'
-import Learner from './learner.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Person from './person.js'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Rating extends BaseModel {
   public static table = 'ratings'
@@ -10,17 +9,17 @@ export default class Rating extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
 
-  @column({ columnName: 'instructor_id' })
-  public instructorId!: number
+  @column({ columnName: 'person_id' })
+  public personId!: number
 
-  @column({ columnName: 'learner_id' })
-  public learnerId!: number
-
-  @column()
-  public rate!: number | null
+  @column({ columnName: 'person_id_as_reviewer' })
+  public personIdAsReviewer!: number
 
   @column()
-  public comment!: string | null
+  public rate!: number
+
+  @column()
+  public description!: string | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
@@ -28,9 +27,6 @@ export default class Rating extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt!: DateTime
 
-  @belongsTo(() => Instructor, { foreignKey: 'instructorId', localKey: 'id' })
-  public instructor!: BelongsTo<typeof Instructor>
-
-  @belongsTo(() => Learner, { foreignKey: 'learnerId', localKey: 'id' })
-  public learner!: BelongsTo<typeof Learner>
+  @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
+  public person!: BelongsTo<typeof Person>
 }

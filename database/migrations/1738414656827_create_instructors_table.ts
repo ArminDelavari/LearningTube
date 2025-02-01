@@ -7,14 +7,13 @@ export default class CreateInstructors extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table
-        .integer('people_id')
+        .integer('person_id')
         .unsigned()
         .notNullable()
         .references('id')
         .inTable('people')
         .onDelete('CASCADE')
-      // ستون‌های اختصاصی مربی
-      table.string('languages').nullable() // اگر زبان‌های تخصصی به صورت متنی ذخیره شود
+      table.string('languages').nullable()
       table.string('courses').nullable()
       table.decimal('percentage_of_payment', 5, 2).nullable()
       table.string('calendar').nullable()

@@ -9,12 +9,12 @@ export default class CreatePeople extends BaseSchema {
       table.string('first_name', 255).notNullable()
       table.string('last_name', 255).notNullable()
       table.string('email', 255).notNullable().unique()
-      table.dateTime('birth_day').nullable()
+      table.dateTime('birth_date').nullable()
       table.string('address', 1024).nullable()
-      table.string('person_type').nullable() // مثلا نقش: instructor, learner, …
-      table.string('bank_account').nullable() // مثال اضافی
-      table.string('gernder').nullable() // اگر منظور gender است؛ در صورت تمایل تغییر نام دهید
-      table.integer('rating').nullable() // امتیاز کلی
+      table.string('role').nullable()
+      table.string('bank_account').nullable()
+      table.string('gender').nullable()
+      table.integer('rating').nullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

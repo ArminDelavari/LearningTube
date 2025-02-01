@@ -14,11 +14,11 @@ export default class CreateRequestsAcceptance extends BaseSchema {
         .inTable('instructors')
         .onDelete('CASCADE')
       table
-        .integer('learnerRequests_id')
+        .integer('requests_id')
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('learnerRequests')
+        .inTable('requests')
         .onDelete('CASCADE')
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

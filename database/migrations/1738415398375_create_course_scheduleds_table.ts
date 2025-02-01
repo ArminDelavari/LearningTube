@@ -14,7 +14,7 @@ export default class CreateCourseScheduled extends BaseSchema {
         .inTable('course_definitions')
         .onDelete('CASCADE')
       table.date('date').notNullable()
-      table.enum('status', ['free', 'busy']).notNullable()
+      table.enum('status', ['free', 'busy']).notNullable() // entries?
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

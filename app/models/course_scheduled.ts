@@ -13,10 +13,10 @@ export default class CourseScheduled extends BaseModel {
   public courseId!: number
 
   @column()
-  public date!: string // یا DateTime، در صورت تنظیمات مناسب
+  public date!: string
 
   @column()
-  public status!: 'free' | 'busy'
+  public status!: 'free' | 'busy' // entries?
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

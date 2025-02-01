@@ -17,7 +17,7 @@ export default class CreateCourseDefinitions extends BaseSchema {
         .onDelete('CASCADE')
       table.string('course_type').nullable()
       table.integer('total_session').nullable()
-      table.decimal('price_per_session', 8, 2).nullable()
+      table.decimal('price_per_session', 11, 2).nullable()
       table.integer('max_person').nullable()
       table.integer('min_person').nullable()
       table.text('description').nullable()

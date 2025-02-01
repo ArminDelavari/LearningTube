@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import Instructor from './instructor.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
-import learnerRequests from './request.js'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import Request from './request.js'
 
 export default class RequestsAcceptance extends BaseModel {
   public static table = 'requests_acceptance'
@@ -25,6 +25,6 @@ export default class RequestsAcceptance extends BaseModel {
   @belongsTo(() => Instructor, { foreignKey: 'instructorId', localKey: 'id' })
   public instructor!: BelongsTo<typeof Instructor>
 
-  @belongsTo(() => learnerRequests, { foreignKey: 'requestId', localKey: 'id' })
-  public request!: BelongsTo<typeof learnerRequests>
+  @belongsTo(() => Request, { foreignKey: 'requestId', localKey: 'id' })
+  public request!: BelongsTo<typeof Request>
 }

@@ -1,6 +1,5 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
 
 export default class Person extends BaseModel {
   public static table = 'people'
@@ -17,19 +16,19 @@ export default class Person extends BaseModel {
   @column()
   public email!: string
 
-  @column({ columnName: 'birth_day' })
-  public birthDay!: DateTime | null
+  @column({ columnName: 'birth_date' })
+  public birthDate!: DateTime | null
 
   @column()
   public address!: string | null
 
-  @column({ columnName: 'person_type' })
-  public personType!: string | null
+  @column({ columnName: 'role' })
+  public role!: string | null
 
   @column({ columnName: 'bank_account' })
   public bankAccount!: string | null
 
-  @column({ columnName: 'gernder' })
+  @column({ columnName: 'gender' })
   public gender!: string | null
 
   @column()
