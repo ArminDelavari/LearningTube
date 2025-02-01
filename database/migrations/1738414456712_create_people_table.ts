@@ -14,7 +14,7 @@ export default class CreatePeople extends BaseSchema {
       table.string('role').nullable()
       table.string('bank_account').nullable()
       table.string('gender').nullable()
-      table.integer('rating').nullable()
+      table.float('rating').nullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
