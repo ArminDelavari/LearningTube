@@ -1,31 +1,43 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
 
-export default class People extends BaseModel {
+export default class Person extends BaseModel {
+  public static table = 'people'
+
   @column({ isPrimary: true })
   public id!: number
 
-  @column()
-  public first_name!: string
+  @column({ columnName: 'first_name' })
+  public firstName!: string
 
-  @column()
-  public last_name!: string
+  @column({ columnName: 'last_name' })
+  public lastName!: string
 
   @column()
   public email!: string
 
-  @column.dateTime()
-  public birth_day!: DateTime | null
+  @column({ columnName: 'birth_day' })
+  public birthDay!: DateTime | null
 
   @column()
   public address!: string | null
 
+  @column({ columnName: 'person_type' })
+  public personType!: string | null
+
+  @column({ columnName: 'bank_account' })
+  public bankAccount!: string | null
+
+  @column({ columnName: 'gernder' })
+  public gender!: string | null
+
   @column()
-  public person_type!: number
+  public rating!: number | null
 
   @column.dateTime({ autoCreate: true })
-  public created_at!: DateTime
+  public createdAt!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updated_at!: DateTime
+  public updatedAt!: DateTime
 }

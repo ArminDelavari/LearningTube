@@ -1,14 +1,20 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
 import Language from './language.js'
-import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Person from './people.js'
 
 export default class Learner extends BaseModel {
+  public static table = 'learners'
+
   @column({ isPrimary: true })
   public id!: number
 
+  @column({ columnName: 'person_id' })
+  public personId!: number
+
   @column()
-  public people_id!: number
+  public username!: string
 
   @manyToMany(() => Language, {
     pivotTable: 'learner_languages', // Define the pivot table
@@ -17,9 +23,21 @@ export default class Learner extends BaseModel {
   })
   public languages!: ManyToMany<typeof Language>
 
+  @column({ columnName: 'time_zone' })
+  public timeZone!: string | null
+
+  @column()
+  public password!: string
+
+  @column({ columnName: 'access_tokens' })
+  public accessTokens!: string | null
+
   @column.dateTime({ autoCreate: true })
-  declare createdAt: DateTime
+  public createdAt!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  public updatedAt!: DateTime
+
+  @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
+  public person!: BelongsTo<typeof Person>
 }
