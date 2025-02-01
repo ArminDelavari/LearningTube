@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import Wallet from './wallet.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Transaction extends BaseModel {
   public static table = 'transactions'
@@ -19,10 +19,16 @@ export default class Transaction extends BaseModel {
   public amount!: number
 
   @column()
-  public currency!: string | null
+  public targetBankAccount!: string
+
+  @column()
+  public action!: string
 
   @column()
   public status!: string | null
+
+  @column()
+  public description!: string | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

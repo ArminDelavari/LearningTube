@@ -16,6 +16,15 @@ export default class RequestsAcceptance extends BaseModel {
   @column({ columnName: 'request_id' })
   public requestId!: number
 
+  @column.dateTime({ columnName: 'expire_date' })
+  public expireDate!: DateTime | null
+
+  @column()
+  public status!: 'pending' | 'accepted' | 'rejected'
+
+  @column()
+  public reason!: string | null
+
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
 

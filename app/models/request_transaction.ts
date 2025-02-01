@@ -9,26 +9,26 @@ export default class RequestTransaction extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
 
-  @column({ columnName: 'request_id' })
+  @column({ columnName: 'requests_id' })
   public requestId!: number
 
-  @column({ columnName: 'transaction_number' })
+  @column()
   public transactionNumber!: string
 
   @column()
   public amount!: number
 
-  @column({ columnName: 'start_date' })
+  @column()
   public startDate!: string | null
 
   @column()
-  public currency!: string | null
+  public instructorAction!: string | null
+
+  @column()
+  public targetBankAccount!: string | null
 
   @column()
   public status!: string | null
-
-  @column()
-  public reason!: string | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

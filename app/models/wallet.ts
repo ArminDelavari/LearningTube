@@ -12,14 +12,17 @@ export default class Wallet extends BaseModel {
   @column({ columnName: 'person_id' })
   public personId!: number
 
-  @column({ columnName: 'person_id_as_reviewer' })
-  public personIdAsReviewer!: number
+  @column()
+  public amount!: number
 
   @column()
-  public rate!: number
+  public currency!: string
 
   @column()
-  public description!: string | null
+  public status!: 'active' | 'inactive' | 'suspended'
+
+  @column()
+  public transactions!: Record<string, any>[] | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
