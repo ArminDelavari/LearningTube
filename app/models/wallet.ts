@@ -1,8 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import Person from './person.js'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
+import Transaction from './transaction.js';
 export default class Wallet extends BaseModel {
   public static table = 'wallets'
 
@@ -21,8 +21,8 @@ export default class Wallet extends BaseModel {
   @column()
   public status!: 'active' | 'inactive' | 'suspended'
 
-  @column()
-  public transactions!: Record<string, any>[] | null
+  @hasMany(() => Transaction)
+  public transactions!: HasMany<typeof Transaction>
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

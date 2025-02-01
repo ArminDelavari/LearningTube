@@ -51,6 +51,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
     serializeAs: null
   })
   declare password: string
+  
+  @column()
+  public status!: 'active' | 'deactive' | 'suspended' | 'deleted'
 
   @column.dateTime({
     autoCreate: true

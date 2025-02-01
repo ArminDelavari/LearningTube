@@ -19,13 +19,17 @@ export default class CourseDefinition extends BaseModel {
   public instructorId!: number
 
   @column({ columnName: 'course_type' })
-  public courseType!: string | null
+  public courseType!: 'private' | 'general'
 
   @column({ columnName: 'total_session' })
   public totalSession!: number | null
 
   @column({ columnName: 'price_per_session' })
   public pricePerSession!: number | null
+
+  @column({ columnName: 'currency' })
+  public currency!: string | null
+
 
   @column({ columnName: 'max_person' })
   public maxPerson!: number | null

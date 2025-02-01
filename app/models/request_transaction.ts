@@ -22,13 +22,10 @@ export default class RequestTransaction extends BaseModel {
   public startDate!: string | null
 
   @column()
-  public instructorAction!: string | null
-
-  @column()
   public targetBankAccount!: string | null
 
   @column()
-  public status!: string | null
+  public status!: 'paid' | 'pending'
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

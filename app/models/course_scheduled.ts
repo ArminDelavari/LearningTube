@@ -16,7 +16,7 @@ export default class CourseScheduled extends BaseModel {
   public date!: string
 
   @column()
-  public status!: 'free' | 'busy' // entries?
+  public status!: 'done' | 'canceled' | 'rescheduled' | 'scheduled'
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime

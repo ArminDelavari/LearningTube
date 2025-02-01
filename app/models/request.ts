@@ -1,9 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import Instructor from './instructor.js'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import Learner from './learner.js'
 import CourseDefinition from './course_definition.js'
+import RequestsAcceptance from './requests_acceptance.js'
 
 export default class Request extends BaseModel {
   public static table = 'requests'
@@ -23,11 +24,8 @@ export default class Request extends BaseModel {
   @column({ columnName: 'start_date' })
   public startDate!: string | null
 
-  @column({ columnName: 'instructor_action' })
-  public instructorAction!: string | null
-
   @column()
-  public status!: string | null
+  public status!: 'pending' | 'accepted' | 'rejected' | 'open'
 
   @column.dateTime({ autoCreate: true })
   public createdAt!: DateTime
@@ -43,4 +41,8 @@ export default class Request extends BaseModel {
 
   @belongsTo(() => CourseDefinition, { foreignKey: 'courseDefinationId', localKey: 'id' })
   public courseDefinition!: BelongsTo<typeof CourseDefinition>
+
+  @hasMany(() => RequestsAcceptance)
+  public requestsAcceptances!: HasMany<typeof RequestsAcceptance>
+  
 }

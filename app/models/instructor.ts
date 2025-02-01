@@ -1,9 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column, manyToMany } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany, manyToMany } from '@adonisjs/lucid/orm'
 import Language from './language.js'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Person from './person.js'
-
+import Request from './request.js'
+import CourseDefinition from './course_definition.js'
+import Calendar from './calendar.js'
 export default class Instructor extends BaseModel {
   public static table = 'instructors'
 
@@ -20,17 +22,19 @@ export default class Instructor extends BaseModel {
   })
   public languages!: ManyToMany<typeof Language>
 
-  @column()
-  public courses!: string | null
+  @hasMany(() => CourseDefinition)
+  public courseDefinition!: HasMany<typeof CourseDefinition>
 
   @column({ columnName: 'percentage_of_payment' })
   public percentageOfPayment!: number | null
 
-  @column()
-  public calendar!: string | null
+  @hasMany(() => Calendar)
+  public calendar!: HasMany<typeof Calendar>
 
-  @column()
-  public requests!: string | null
+
+  @hasMany(() => Request)
+  public request!: HasMany<typeof Request>
+
 
   @column()
   public biography!: string | null
