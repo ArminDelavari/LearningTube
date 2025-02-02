@@ -13,9 +13,9 @@ export default class Language extends BaseModel {
   @column({ columnName: 'code_name' })
   public codeName!: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 }

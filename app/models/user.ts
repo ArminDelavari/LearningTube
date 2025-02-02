@@ -4,7 +4,7 @@ import { compose } from '@adonisjs/core/helpers'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
-import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Person from './person.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -21,9 +21,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare username: string
 
-  @column({
-    columnName: 'person_id',
-  })
+  @column({ columnName: 'person_id' })
   public personId!: number
 
   @column()
@@ -38,17 +36,15 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
-  public status!: 'active' | 'deactive' | 'suspended' | 'deleted'
+  public status!: 'active' | 'deactivate' | 'suspended' | 'deleted'
 
-  @column.dateTime({
-    autoCreate: true,
-  })
+  @column({ columnName: 'access_tokens' })
+  public accessTokens!: string | null
+
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   declare createdAt: DateTime
 
-  @column.dateTime({
-    autoCreate: true,
-    autoUpdate: true,
-  })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   declare updatedAt: DateTime | null
 
   static accessTokens = DbAccessTokensProvider.forModel(User)

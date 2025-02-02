@@ -30,7 +30,6 @@ export default class CourseDefinition extends BaseModel {
   @column({ columnName: 'currency' })
   public currency!: string | null
 
-
   @column({ columnName: 'max_person' })
   public maxPerson!: number | null
 
@@ -46,10 +45,10 @@ export default class CourseDefinition extends BaseModel {
   @column({ columnName: 'start_date' })
   public startDate!: DateTime | null
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Instructor, { foreignKey: 'instructorId', localKey: 'id' })

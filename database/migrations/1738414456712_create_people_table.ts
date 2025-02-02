@@ -11,7 +11,6 @@ export default class CreatePeople extends BaseSchema {
       table.string('email', 255).notNullable().unique()
       table.dateTime('birth_date').nullable()
       table.string('address', 1024).nullable()
-      table.string('role').notNullable()
       table.string('bank_account').nullable()
       table.string('gender').nullable()
       table.float('rating').nullable()

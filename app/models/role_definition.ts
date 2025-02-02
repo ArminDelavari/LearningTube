@@ -5,13 +5,13 @@ import EnvironmentEntity from './environment_entity.js'
 
 export default class RoleDefinition extends BaseModel {
   @column({ isPrimary: true })
-  declare id: number
+  public id!: number
 
   @column({ columnName: 'logical_name' })
-  declare logicalName: string
+  public logicalName!: string
 
   @column()
-  declare description?: string
+  public description!: string
 
   @manyToMany(() => EnvironmentEntity, {
     pivotTable: 'role_entities_assignments',
@@ -21,8 +21,8 @@ export default class RoleDefinition extends BaseModel {
   public assignedEntities!: ManyToMany<typeof EnvironmentEntity>
 
   @column.dateTime({ autoCreate: true, columnName: 'created_at' })
-  declare createdAt: DateTime
+  public createdAt!: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
-  declare updatedAt: DateTime
+  public updatedAt!: DateTime
 }

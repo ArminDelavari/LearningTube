@@ -12,7 +12,7 @@ export default class Course extends BaseModel {
   @column({ isPrimary: true })
   public id!: number
 
-  @column()
+  @column({ columnName: 'course_definition_id' })
   public courseDefinitionId!: number
 
   @manyToMany(() => Learner, {
@@ -25,18 +25,16 @@ export default class Course extends BaseModel {
   @hasMany(() => CourseScheduled)
   public scheduledSession!: HasMany<typeof CourseScheduled>
 
-  @column.date()
+  @column.date({ columnName: 'start_date' })
   public startDate!: DateTime | null
 
-  @column.date()
+  @column.date({ columnName: 'end_date' })
   public endDate!: DateTime | null
 
   @column()
   public status!: 'inProgress' | 'completed' | 'cancelled' | 'notStarted'
 
-  @column({
-    columnName: 'capacity_status',
-  })
+  @column({ columnName: 'capacity_status' })
   public capacityStatus!: 'closed' | 'open'
 
   @column()
@@ -45,12 +43,12 @@ export default class Course extends BaseModel {
   @hasMany(() => CourseRating)
   public courseRating!: HasMany<typeof CourseRating>
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
-  @belongsTo(() => CourseDefinition)
+  @belongsTo(() => CourseDefinition, { foreignKey: 'courseDefinitionId', localKey: 'id' })
   public courseDefinition!: BelongsTo<typeof CourseDefinition>
 }

@@ -12,25 +12,28 @@ export default class RequestTransaction extends BaseModel {
   @column({ columnName: 'requests_id' })
   public requestId!: number
 
-  @column()
+  @column({ columnName: 'transaction_number' })
   public transactionNumber!: string
 
   @column()
   public amount!: number
 
   @column()
+  public currency!: string
+
+  @column({ columnName: 'start_date' })
   public startDate!: string | null
 
-  @column()
+  @column({ columnName: 'target_bank_account' })
   public targetBankAccount!: string | null
 
   @column()
   public status!: 'paid' | 'pending'
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Request, { foreignKey: 'requestId', localKey: 'id' })

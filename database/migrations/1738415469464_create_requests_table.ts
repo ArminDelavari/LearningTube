@@ -21,7 +21,7 @@ export default class CreateRequests extends BaseSchema {
         .inTable('learners')
         .onDelete('CASCADE')
       table
-        .integer('course_defination_id')
+        .integer('course_definition_id')
         .unsigned()
         .notNullable()
         .references('id')

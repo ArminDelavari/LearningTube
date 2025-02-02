@@ -2,7 +2,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import Person from './person.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import CourseDefinition from './course_definition.js'
 import Course from './course.js'
 
 export default class CourseRating extends BaseModel {
@@ -23,10 +22,10 @@ export default class CourseRating extends BaseModel {
   @column()
   public description!: string | null
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })

@@ -18,8 +18,8 @@ export default class Request extends BaseModel {
   @column({ columnName: 'learner_id' })
   public learnerId!: number
 
-  @column({ columnName: 'course_defination_id' })
-  public courseDefinationId!: number
+  @column({ columnName: 'course_definition_id' })
+  public courseDefinitionId!: number
 
   @column({ columnName: 'start_date' })
   public startDate!: string | null
@@ -27,10 +27,10 @@ export default class Request extends BaseModel {
   @column()
   public status!: 'pending' | 'accepted' | 'rejected' | 'open'
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Instructor, { foreignKey: 'instructorId', localKey: 'id' })
@@ -44,5 +44,4 @@ export default class Request extends BaseModel {
 
   @hasMany(() => RequestsAcceptance)
   public requestsAcceptances!: HasMany<typeof RequestsAcceptance>
-  
 }

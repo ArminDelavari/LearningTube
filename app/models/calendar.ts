@@ -26,12 +26,12 @@ export default class Calendar extends BaseModel {
   public duration!: Number
 
   @column()
-  public status!: 'free' | 'busy' | 'doNotDisturbe' | 'outOfOffice'
+  public status!: 'free' | 'busy' | 'doNotDisturb' | 'outOfOffice'
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })

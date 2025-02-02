@@ -31,18 +31,16 @@ export default class Instructor extends BaseModel {
   @hasMany(() => Calendar)
   public calendar!: HasMany<typeof Calendar>
 
-
   @hasMany(() => Request)
   public request!: HasMany<typeof Request>
-
 
   @column()
   public biography!: string | null
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })

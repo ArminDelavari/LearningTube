@@ -13,7 +13,6 @@ export default class CreateInstructors extends BaseSchema {
         .references('id')
         .inTable('people')
         .onDelete('CASCADE')
-      table.string('languages').nullable()
       table.decimal('percentage_of_payment', 5, 2).nullable()
       table.text('biography').nullable()
       table.timestamp('created_at', { useTz: true })

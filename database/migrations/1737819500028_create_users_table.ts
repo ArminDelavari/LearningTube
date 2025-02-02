@@ -1,6 +1,4 @@
-import {
-  BaseSchema
-} from '@adonisjs/lucid/schema'
+import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
@@ -19,8 +17,8 @@ export default class extends BaseSchema {
       table.string('time_zone').notNullable()
       table.string('language').notNullable()
       table.string('password').notNullable()
-      table.enum('status', ['active', 'deactive', 'suspended', 'deleted'])
-      table.string('accessTokens').nullable()
+      table.enum('status', ['active', 'deactivate', 'suspended', 'deleted'])
+      table.string('access_tokens').nullable()
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
     })

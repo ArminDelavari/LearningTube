@@ -18,7 +18,7 @@ export default class Transaction extends BaseModel {
   @column()
   public amount!: number
 
-  @column({ columnName: 'currency' })
+  @column()
   public currency!: string | null
 
   @column({ columnName: 'target_bank_account' })
@@ -33,10 +33,10 @@ export default class Transaction extends BaseModel {
   @column()
   public description!: string | null
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true, columnName: 'created_at' })
   public createdAt!: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  @column.dateTime({ autoCreate: true, autoUpdate: true, columnName: 'updated_at' })
   public updatedAt!: DateTime
 
   @belongsTo(() => Wallet, { foreignKey: 'walletId', localKey: 'id' })

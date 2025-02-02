@@ -1,6 +1,4 @@
-import {
-  BaseSchema
-} from '@adonisjs/lucid/schema'
+import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class CreateCourses extends BaseSchema {
   protected tableName = 'courses'
@@ -15,17 +13,19 @@ export default class CreateCourses extends BaseSchema {
         .references('id')
         .inTable('course_definitions')
         .onDelete('CASCADE')
-      table.string('participants').nullable()
       table.date('start_date').nullable()
       table.date('end_date').nullable()
-      table.enum('status', ['inProgress', 'completed', 'cancelled', 'notStarted']).notNullable().defaultTo('active')
+      table
+        .enum('status', ['inProgress', 'completed', 'cancelled', 'notStarted'])
+        .notNullable()
+        .defaultTo('active')
       table.enum('capacity_status', ['closed', 'open']).notNullable().defaultTo('open')
       table.float('rating').notNullable().defaultTo(0)
       table.timestamp('created_at', {
-        useTz: true
+        useTz: true,
       })
       table.timestamp('updated_at', {
-        useTz: true
+        useTz: true,
       })
     })
   }

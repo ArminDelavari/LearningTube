@@ -12,8 +12,6 @@ export default class CreateLearners extends BaseSchema {
         .references('id')
         .inTable('people')
         .onDelete('CASCADE')
-      table.string('languages').nullable()
-      table.string('courses').nullable()
       table.text('biography').nullable()
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
