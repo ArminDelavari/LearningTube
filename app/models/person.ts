@@ -6,9 +6,7 @@ import type { ManyToMany } from '@adonisjs/lucid/types/relations'
 export default class Person extends BaseModel {
   public static table = 'people'
 
-  @column({
-    isPrimary: true,
-  })
+  @column({ isPrimary: true })
   public id!: number
 
   @column({ columnName: 'first_name' })
