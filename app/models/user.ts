@@ -1,25 +1,10 @@
-import {
-  DateTime
-} from 'luxon'
+import { DateTime } from 'luxon'
 import hash from '@adonisjs/core/services/hash'
-import {
-  compose
-} from '@adonisjs/core/helpers'
-import {
-  BaseModel,
-  belongsTo,
-  column
-} from '@adonisjs/lucid/orm'
-import {
-  withAuthFinder
-} from '@adonisjs/auth/mixins/lucid'
-import {
-  DbAccessTokensProvider
-} from '@adonisjs/auth/access_tokens'
-import type {
-  BelongsTo,
-  ManyToMany
-} from '@adonisjs/lucid/types/relations'
+import { compose } from '@adonisjs/core/helpers'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
+import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
 import Person from './person.js'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
@@ -29,7 +14,7 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
 
 export default class User extends compose(BaseModel, AuthFinder) {
   @column({
-    isPrimary: true
+    isPrimary: true,
   })
   declare id: number
 
@@ -37,7 +22,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare username: string
 
   @column({
-    columnName: 'person_id'
+    columnName: 'person_id',
   })
   public personId!: number
 
@@ -48,29 +33,25 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare language: string
 
   @column({
-    serializeAs: null
+    serializeAs: null,
   })
   declare password: string
-  
+
   @column()
   public status!: 'active' | 'deactive' | 'suspended' | 'deleted'
 
   @column.dateTime({
-    autoCreate: true
+    autoCreate: true,
   })
   declare createdAt: DateTime
 
   @column.dateTime({
     autoCreate: true,
-    autoUpdate: true
+    autoUpdate: true,
   })
   declare updatedAt: DateTime | null
 
   static accessTokens = DbAccessTokensProvider.forModel(User)
-  @belongsTo(() => Person, {
-    foreignKey: 'personId',
-    localKey: 'id'
-  })
-  public person!: BelongsTo < typeof Person >
-
+  @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
+  public person!: BelongsTo<typeof Person>
 }

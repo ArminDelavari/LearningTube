@@ -7,47 +7,44 @@ import Request from './request.js'
 import Course from './course.js'
 import Calendar from './calendar.js'
 
-
 export default class Learner extends BaseModel {
   public static table = 'learners'
 
   @column({ isPrimary: true })
-    public id!: number
-  
-    @column({ columnName: 'person_id' })
-    public personId!: number
-  
-    @manyToMany(() => Language, {
-      pivotTable: 'instructor_languages',
-      pivotForeignKey: 'instructor_id',
-      pivotRelatedForeignKey: 'language_id',
-    })
-    public languages!: ManyToMany<typeof Language>
-  
+  public id!: number
 
-    @manyToMany(() => Course, {
-      pivotTable: 'learner_courses',
-      pivotForeignKey: 'learner_id',
-      pivotRelatedForeignKey: 'course_id',
-    })
-    public courses!: ManyToMany<typeof Course>
-  
-    @hasMany(() => Calendar)
-    public calendar!: HasMany<typeof Calendar>
+  @column({ columnName: 'person_id' })
+  public personId!: number
 
+  @manyToMany(() => Language, {
+    pivotTable: 'instructor_languages',
+    pivotForeignKey: 'instructor_id',
+    pivotRelatedForeignKey: 'language_id',
+  })
+  public languages!: ManyToMany<typeof Language>
 
-    @hasMany(() => Request)
-    public request!: HasMany<typeof Request>
-  
-    @column()
-    public biography!: string | null
-  
-    @column.dateTime({ autoCreate: true })
-    public createdAt!: DateTime
-  
-    @column.dateTime({ autoCreate: true, autoUpdate: true })
-    public updatedAt!: DateTime
-  
-    @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
-    public person!: BelongsTo<typeof Person>
+  @manyToMany(() => Course, {
+    pivotTable: 'learner_courses',
+    pivotForeignKey: 'learner_id',
+    pivotRelatedForeignKey: 'course_id',
+  })
+  public courses!: ManyToMany<typeof Course>
+
+  @hasMany(() => Calendar)
+  public calendar!: HasMany<typeof Calendar>
+
+  @hasMany(() => Request)
+  public request!: HasMany<typeof Request>
+
+  @column()
+  public biography!: string | null
+
+  @column.dateTime({ autoCreate: true })
+  public createdAt!: DateTime
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  public updatedAt!: DateTime
+
+  @belongsTo(() => Person, { foreignKey: 'personId', localKey: 'id' })
+  public person!: BelongsTo<typeof Person>
 }
