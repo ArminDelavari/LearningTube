@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-100 bg-dark-950;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-full transition-all duration-300 font-medium;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply btn border-2 border-accent-500 text-accent-400 hover:bg-accent-500/10;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border border-dark-600 bg-dark-800 text-gray-100 focus:ring-2 focus:ring-accent-500 focus:border-transparent outline-none;
+  }
+
+  .card {
+    @apply bg-dark-800/50 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-dark-700;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
